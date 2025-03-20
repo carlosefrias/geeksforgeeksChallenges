@@ -5,23 +5,26 @@
 # A transaction consists of buying and subsequently selling a stock and new transaction can start only when the previous transaction has been completed.
 
 def maxProfit(prices, k):
-    if isSortedDescending(prices):
-        return 0
-    
     n = len(prices)
     if n <= 1:
         return 0
     
-    # Create a 2D array to store the maximum profit
-    dp = [[0 for _ in range(n)] for _ in range(k + 1)]
+    if isSortedDescending(prices):
+        return 0
     
-    for i in range(1, k + 1):
+    # Create a 2D array to store the maximum profit
+    dp = [[0 for _ in range(n)] for _ in range(k)]
+    print(dp)
+
+    for i in range(0, k):
         max_diff = -prices[0]
         for j in range(1, n):
             dp[i][j] = max(dp[i][j - 1], prices[j] + max_diff)
+            print(dp)
             max_diff = max(max_diff, dp[i - 1][j] - prices[j])
+            print(f"max_diff: {max_diff}")
     
-    return dp[k][n - 1]
+    return dp[k-1][n - 1]
     
 
 def isSortedDescending(prices):
