@@ -9,11 +9,13 @@ def find_max_sum(arr):
         return max(arr[0], arr[1])
         
     dp[0] = arr[0]
-    for i in range(1,n):
+    dp[1] = max(arr[0], arr[1])
+    for i in range(2,n):
         dp[i] = arr[i] + max(dp[i-2], dp[i-3])
     return max(dp[n-1], dp[n-2])
 
 print(find_max_sum([768, 398]))
+print(find_max_sum([10,9,7,6]))
 print(find_max_sum([9, 10, 5, 7]))
 print(find_max_sum([6, 5, 5, 7, 4]))
 print(find_max_sum([1, 5, 3]))
