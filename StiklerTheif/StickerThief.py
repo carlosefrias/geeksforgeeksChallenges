@@ -12,7 +12,7 @@ def find_max_sum(arr):
     dp[1] = max(arr[0], arr[1])
     for i in range(2,n):
         dp[i] = arr[i] + max(dp[i-2], dp[i-3])
-    return max(dp[n-1], dp[n-2])
+    return max(dp[-1], dp[-2])
 
 print(find_max_sum([768, 398]))
 print(find_max_sum([10,9,7,6]))
