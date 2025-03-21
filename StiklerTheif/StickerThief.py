@@ -1,6 +1,6 @@
 def find_max_sum(arr):
     n = len(arr)
-    dp = [0]*(n)
+    dp = [0]*n
     if(n==0):
         return 0
     if(n==1):
