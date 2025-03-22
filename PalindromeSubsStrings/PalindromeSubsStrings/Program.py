@@ -1,23 +1,26 @@
 def count_ps(s):
-    if len(s) < 2:
-        return 0
-    palindromes = []
-    for length in range(2, len(s)):
-        pos = 0
-        while pos + length <= len(s):
-            sub_string = s[pos:pos + length]
-            if is_palindrome(sub_string):
-                palindromes.append(sub_string)
-            pos += 1
+    def expand_around_center(left, right):
+        count = 0
+        while left >= 0 and right < len(s):
+            if s[left] == s[right]:
+                count += 1
+            else:
+                break
+            left -= 1
+            right += 1
+        return count
 
-    return len(palindromes)
+    n = len(s)
+    count = 0
+    for i in range(n):
+        count += expand_around_center(i - 1, i + 1)
+        count += expand_around_center(i, i + 1)
 
-def is_palindrome(s):
-    reverse = s[::-1]
-    return s == reverse
+    return count
+
 
 # See https://aka.ms/new-console-template for more information
-
+print(count_ps("aba"))
 print(count_ps("abaab"))
 print(count_ps("aaa"))
 print(count_ps("abbaeae"))
