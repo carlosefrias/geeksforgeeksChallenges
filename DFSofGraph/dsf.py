@@ -15,7 +15,7 @@
 
 # Note: Do traverse in the same order as they are in the given adjacency list.
             
-def dfs(adj):
+def dfs_recur(adj):
     def dfs_alg(graph, vertex):
         visited[vertex] = True
         result.append(vertex)
@@ -28,8 +28,8 @@ def dfs(adj):
     dfs_alg(adj, 0)
     return result
     
-print(dfs([[2, 3, 1], [0], [0, 4], [0], [2]]))
-print(dfs([[1, 2], [0, 2], [0, 1, 3, 4], [2], [2]]))
+print(dfs_recur([[2, 3, 1], [0], [0, 4], [0], [2]]))
+print(dfs_recur([[1, 2], [0, 2], [0, 1, 3, 4], [2], [2]]))
 
 # or
 # procedure DFS_iterative(G, v) is
