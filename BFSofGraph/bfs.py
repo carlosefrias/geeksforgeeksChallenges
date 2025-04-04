@@ -11,21 +11,19 @@ def bfs(adj):
     n = len(adj)
     if n == 0:
         return []
-    
-    visited = [False] * n
-    is_or_was_in_queue = [False] * n
+        
+    nodes_to_visit = [False] * n
     q = Queue()
     q.put(0)
-    is_or_was_in_queue[0] = True
+    nodes_to_visit[0] = True
     res = []
     while not q.empty():
         current = q.get()
         res.append(current)
-        visited[current] = True
         for w in adj[current]:
-            if not visited[w] and not is_or_was_in_queue[w]:
+            if not nodes_to_visit[w]:
                 q.put(w)
-                is_or_was_in_queue[w] = True
+                nodes_to_visit[w] = True
     return res
 
 
